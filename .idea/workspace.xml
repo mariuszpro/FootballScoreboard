@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d2b4df08-ae1b-40f3-941d-c2dfd7545a87" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/FootballMatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/FootballScoreboard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/mariuszpro/scoreboard/FootballScoreboardShould.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/IndexGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/FootballMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/FootballMatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/FootballScoreboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/mariuszpro/scoreboard/FootballScoreboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,11 +21,26 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
