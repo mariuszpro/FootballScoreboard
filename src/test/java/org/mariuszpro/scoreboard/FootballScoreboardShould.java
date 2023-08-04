@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,16 +18,14 @@ class FootballScoreboardShould {
 
     @Test
     public void startMatch() {
-        scoreboard.startMatch("Team A", "Team B");
+        scoreboard.startMatch("Mexico", "Canada");
         List<FootballMatch> matches = scoreboard.getMatchesOrderedByTotalScoreDesc();
         assertEquals(1, matches.size());
     }
 
     @Test
     public void updateScore() {
-        int matchIndex = scoreboard.startMatch("Team A", "Team B");
-        scoreboard.updateScore(matchIndex, 1, 0);
-
+        addMatchToScoreboard("Mexico", "Canada",1,0);
         List<FootballMatch> matches = scoreboard.getMatchesOrderedByTotalScoreDesc();
         assertEquals(1, matches.get(0).getHomeTeamScore());
         assertEquals(0, matches.get(0).getAwayTeamScore());
@@ -43,17 +42,32 @@ class FootballScoreboardShould {
 
     @Test
     public void getMatchesInProgressOrderedByScore() {
-        int matchIndex = scoreboard.startMatch("Team A", "Team B");
-        scoreboard.updateScore(matchIndex, 1, 1);
-
-        int matchIndex2 = scoreboard.startMatch("Team C", "Team D");
-        scoreboard.updateScore(matchIndex2, 2, 1);
+        int mexicoCanadaIndex = addMatchToScoreboard("Mexico", "Canada",0,5);
+        int spainBrazilIndex = addMatchToScoreboard("Spain","Brazil",10,2);
+        int germanyFranceIndex = addMatchToScoreboard("Germany","France",2,2);
+        int uruguayItalyIndex = addMatchToScoreboard("Uruguay","Italy",6,6);
+        int argentinaAustraliaIndex = addMatchToScoreboard("Argentina","Australia",3,1);
 
         List<FootballMatch> matches = scoreboard.getMatchesOrderedByTotalScoreDesc();
-        assertEquals(2, matches.size());
-        assertEquals("Team C", matches.get(0).getHomeTeam());
-        assertEquals("Team D", matches.get(0).getAwayTeam());
-        assertEquals("Team A", matches.get(1).getHomeTeam());
-        assertEquals("Team B", matches.get(1).getAwayTeam());
+        assertEquals(5, matches.size());
+        assertEquals(uruguayItalyIndex, matches.get(0).getIndex());
+        assertEquals(spainBrazilIndex, matches.get(1).getIndex());
+        assertEquals(mexicoCanadaIndex, matches.get(2).getIndex());
+        assertEquals(argentinaAustraliaIndex, matches.get(3).getIndex());
+        assertEquals(germanyFranceIndex, matches.get(4).getIndex());
+    }
+
+    @Test
+    public void throwsExceptionWhenTheMatchDoesNotExist(){
+        int matchIndex = scoreboard.startMatch("Mexico", "Canada");
+        assertThrows(NoSuchElementException.class, () -> {
+            scoreboard.updateScore(matchIndex+1,1,1);
+        });
+    }
+
+    private int addMatchToScoreboard(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore){
+        int matchIndex = scoreboard.startMatch(homeTeam, awayTeam);
+        scoreboard.updateScore(matchIndex, homeTeamScore, awayTeamScore);
+        return matchIndex;
     }
 }

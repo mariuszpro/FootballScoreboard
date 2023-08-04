@@ -10,7 +10,8 @@ public class FootballScoreboard {
     }
 
     /**
-     * returns index of the match
+     * Adds the match to the scoreboard and
+     * returns the index of the match
      * @param homeTeam
      * @param awayTeam
      * @return
